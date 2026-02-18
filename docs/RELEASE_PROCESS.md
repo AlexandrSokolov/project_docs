@@ -164,8 +164,23 @@ Before triggering a manual release:
 
 #### Downloading Original JavaScript Files From the Server
 
+1. Make sure you have in [.gitignore](../.gitignore) the following section:
+    ```text
+    # Environment secrets
+    .env.secrets
+    *.secrets
+    ```
+2. Create in the root folder of the project `.env.secrets` file with sftp credentials.
+    ```text
+    # SFTP Credentials
+    SFTP_HOST=remote.host
+    SFTP_USER=sftpUser
+    SFTP_PASSWORD=sftpPassword
+    ```
+
 ```bash
-sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+source ../.env.secrets
+sshpass -p "$SFTP_PASSWORD" sftp -P 22 "$SFTP_USER@$SFTP_HOST":/var/www/project/js/ <<EOF
 get process-customer.js ./scripts/customer/process-customer.origin.js
 EOF
 ```
@@ -176,7 +191,8 @@ EOF
 #### Deploying Local JavaScript Files to the Server
 
 ```bash
-sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+source ../.env.secrets
+sshpass -p "$SFTP_PASSWORD" sftp -P 22 "$SFTP_USER@$SFTP_HOST":/var/www/project/js/ <<EOF
 put ./scripts/customer/process-customer.js
 EOF
 ```
