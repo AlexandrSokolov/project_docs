@@ -20,7 +20,6 @@ This document describes how to build, run, test, and interact with the project i
     - [GET example](#getT example
 - 11. Health check
 - 12. Logs
-      ``
 
 ### Prerequisites
 

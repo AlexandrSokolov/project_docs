@@ -3,6 +3,10 @@
 This document describes how the project is built, versioned, and published using Jenkins and Nexus. 
 It serves as the single source of truth for release automation and manual triggers.
 
+## Table of Contents
+
+- [Deploying JavaScript Files via SFTP](#deploying-javascript-files-via-sftp)
+
 ## Overview
 
 All official artifacts (JAR and Docker image) are built and published through a Jenkins pipeline. 
@@ -155,4 +159,26 @@ Before triggering a manual release:
 - Build owner: <team/contact>
 - DevOps/ITO team: <contact>
 - Release manager: <contact>
+
+### Deploying JavaScript Files via SFTP
+
+1. Downloading Original JavaScript Files From the Server
+    ```bash
+    sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+    get process-customer.js ./scripts/customer/process-customer.origin.js
+    EOF
+    ```
+    * `user@remote.host:/var/www/project/js/` - remote server and directory where the JS files are stored
+    * `process-customer.js` - the file you want to retrieve
+    * `./scripts/customer/process-customer.origin.js` - local destination; using .origin.js helps keep the untouched reference copy
+
+2. Deploying Local JavaScript Files to the Server
+    ```bash
+    sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+    put ./scripts/customer/process-customer.js
+    EOF
+    ```
+    * `./scripts/customer/process-customer.js` - local file you want to upload
+    * `user@remote.host:/var/www/project/js/` - remote target directory on the server
+
 
