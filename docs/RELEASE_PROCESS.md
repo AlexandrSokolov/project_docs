@@ -162,23 +162,25 @@ Before triggering a manual release:
 
 ### Deploying JavaScript Files via SFTP
 
-1. Downloading Original JavaScript Files From the Server
-    ```bash
-    sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
-    get process-customer.js ./scripts/customer/process-customer.origin.js
-    EOF
-    ```
-    * `user@remote.host:/var/www/project/js/` - remote server and directory where the JS files are stored
-    * `process-customer.js` - the file you want to retrieve
-    * `./scripts/customer/process-customer.origin.js` - local destination; using .origin.js helps keep the untouched reference copy
+#### Downloading Original JavaScript Files From the Server
 
-2. Deploying Local JavaScript Files to the Server
-    ```bash
-    sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
-    put ./scripts/customer/process-customer.js
-    EOF
-    ```
-    * `./scripts/customer/process-customer.js` - local file you want to upload
-    * `user@remote.host:/var/www/project/js/` - remote target directory on the server
+```bash
+sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+get process-customer.js ./scripts/customer/process-customer.origin.js
+EOF
+```
+  * `user@remote.host:/var/www/project/js/` - remote server and directory where the JS files are stored
+  * `process-customer.js` - the file you want to retrieve
+  * `./scripts/customer/process-customer.origin.js` - local destination; using .origin.js helps keep the untouched reference copy
+
+#### Deploying Local JavaScript Files to the Server
+
+```bash
+sftp -P 22 user@remote.host:/var/www/project/js/ <<EOF
+put ./scripts/customer/process-customer.js
+EOF
+```
+  * `./scripts/customer/process-customer.js` - local file you want to upload
+  * `user@remote.host:/var/www/project/js/` - remote target directory on the server
 
 
