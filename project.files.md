@@ -18,6 +18,7 @@
 | DEPLOYMENT_HISTORY.md                                 | Chronological record of all deployments               |                                                     |                           |                                |
 | RELEASE_PROCESS.md                                    |                                                       |                                                     |                           |                                |
 | FAQ.md                                                | Common questions and how to solve them.               |                                                     |                           |                                |
+| CONFIGURATION.md                                      | Required configuration steps and parameters.          |                                                     |                           |                                |
 | ROADMAP.md                                            | Project direction, planned milestones.                |                                                     |                           |                                |
 
 
@@ -89,3 +90,30 @@ so the team can easily trace what was deployed, when, and why.
 
 It acts as a single source of truth for redeployments, audits, and environment reconstruction months later.
 
+[`DEPLOYMENT_HISTORY.md` template](docs/DEPLOYMENT_HISTORY.md)
+
+### CONFIGURATION.md
+
+Use this if the component has complex or detailed configuration logic.
+
+A clean pattern is:
+1. Overview (simple)
+2. Quick Start (simple)
+3. Basic Configuration (simple)
+4. Configuration File Location (simple)
+5. Optional Advanced Settings (complex)
+6. Environment Variables (complex)
+7. System Requirements / OS prerequisites (simple/complex)
+8. Troubleshooting (simple)
+
+Should you keep a separate example config file?
+Absolutely. Inside docs/ or a small subfolder:
+````text
+docs/
+CONFIGURATION.md
+  config/
+    example.properties
+````
+This is user-friendly and avoids cluttering the root.
+
+[`CONFIGURATION.md` template](docs/CONFIGURATION.md)

@@ -1,0 +1,10 @@
+
+# Example configuration for my-component
+authentication:
+  domain: example.com
+  login: my-user
+  password: my-secret-password
+
+logging:
+  level:
+    com.davdev.my-component: INFO
